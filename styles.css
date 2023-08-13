@@ -76,3 +76,28 @@ html,body{
     text-align: right;
 }
 
+#hero-footer{
+    display: flex;
+    justify-content: space-between;
+    margin: 20px auto;
+    padding: 0 50px;
+}
+
+#hero-footer a{
+    text-decoration: none;
+    color: #fff;
+}
+
+#icon-set{
+    display: flex;
+}
+.circle{
+    background-color: #fff;
+    color: black;
+    border-radius: 50%;
+    padding: 5px;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    font-weight: 900;
+}

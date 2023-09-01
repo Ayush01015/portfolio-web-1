@@ -3,11 +3,64 @@ const scroll = new LocomotiveScroll({
     smooth: true
 });
 
-function circleMouseFollower(){
-    window.addEventListener("mousemove",(details)=>{
-        // console.log("x=",details.clientX,"y=",details.clientY);
-        document.querySelector("#mini-circle").style.transform = `translate(${details.clientX}px,${details.clientY}px)`
+function firstPageAnim(){
+    let tl = gsap.timeline();
+
+    tl.from("#nav a, #nav h3",{
+        y:-10,
+        opacity:0,
+        duration:1.5,
+        ease:Expo.easeInOut,
+        
+    }).to(".boundingElem",{
+        y:0,
+        ease:Expo.easeInOut,
+        duration:2,
+        stagger:0.2,
+        delay:-1,
+    }).from("#hero-footer",{
+        y:-10,
+        opacity:0,
+        duration:1.2,
+        ease:Expo.easeInOut,
+        delay:-1,
+
+
     })
 }
 
+
+
+
+function skewCircleAnimation(){
+    let xscale = 1;
+    let yscale = 1;
+
+    let xPrev = 0;
+    let yPrev = 0;
+
+    window.addEventListener("mousemove",(dets)=>{
+        /**
+         * gsap.utils.clamp(range1,range2,value)
+         * clamp method to limit the values of xscale and yscale between 0.8 and 1.2.
+         */
+        xscale = gsap.utils.clamp(0.8,1.2,dets.clientX - xPrev);
+        yscale = gsap.utils.clamp(0.8,1.2,dets.clientY - yPrev);
+        
+        xPrev = dets.clientX;
+        yPrev = dets.clientY;
+
+        circleMouseFollower(xscale,yscale);
+        
+    })
+}
+function circleMouseFollower(xscale,yscale){
+    window.addEventListener("mousemove",(details)=>{
+        // console.log("x=",details.clientX,"y=",details.clientY);
+        document.querySelector("#mini-circle").style.transform = `translate(${details.clientX}px,${details.clientY}px) scale(${xscale},${yscale})`
+    })
+}
 circleMouseFollower();
+firstPageAnim();
+skewCircleAnimation();
+

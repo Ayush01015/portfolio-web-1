@@ -29,8 +29,6 @@ function firstPageAnim(){
     })
 }
 
-
-
 var timeout;
 function skewCircleAnimation(){
     let defaultXscale = 1;
@@ -77,6 +75,15 @@ document.querySelectorAll(".element")
             opacity:0,
             ease:Power3,
         })
+        gsap.to(elem.querySelector("h1"),{
+            x:-20,
+        })
+        gsap.to(document.querySelector("#mini-circle"),{
+            height:"12px",
+            width:"12px",
+        })
+        let miniCircle = document.querySelector("#mini-circle");
+        miniCircle.innerHTML = "";
     })
     elem.addEventListener("mousemove",(dets)=>{
         var diff =(dets.clientY - elem.getBoundingClientRect().top);
@@ -89,6 +96,19 @@ document.querySelectorAll(".element")
             left:dets.clientX,
             rotate:gsap.utils.clamp(-20,20,diffRot*0.5),
         })
+        gsap.to(elem.querySelector("h1"),{
+            x:20,
+        })
+        gsap.to(document.querySelector("#mini-circle"),{
+            height:"45px",
+            width:"45px",
+        })
+        let miniCircle = document.querySelector("#mini-circle");
+        miniCircle.innerHTML = "view";
+        miniCircle.style.display = "flex";
+        miniCircle.style.alignItems = "center";
+        miniCircle.style.justifyContent = "center";
+
     })
 })
 

@@ -197,6 +197,7 @@ html,body{
 #about img{
     /* width: 16vw; */
     width: 235px;
+    border-radius: 50%;
 }
 
 #text-about{

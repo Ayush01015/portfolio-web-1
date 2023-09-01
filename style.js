@@ -114,3 +114,5 @@ document.querySelectorAll(".element")
 
 firstPageAnim();
 skewCircleAnimation();
+
+
